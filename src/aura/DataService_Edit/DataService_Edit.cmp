@@ -1,0 +1,18 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId"> <!--inherit recordId attribute-->
+    
+    <aura:attribute name="record" type="Object" />
+    <aura:attribute name="editRecord" type="Account" />
+    
+    <force:recordData aura:id="editRec"
+                      layoutType="FULL"
+                      recordId="{!v.recordId}"
+                      targetRecord="{!v.record}"
+                      targetFields="{!v.editRecord}"
+                      mode="EDIT" />
+    
+    <lightning:input aura:id="recordName" name="Name" label="Name"
+                     value="{!v.editRecord.Name}" required="true"/>
+        
+    <lightning:button label="Save Record" onclick="{!c.handleSave}"
+                      variant="brand" class="slds-m-top--medium"/>
+</aura:component>
